@@ -1,34 +1,40 @@
-# Kanban MS (Micro Services) 
-<img src="images/diagrama.png" alt="Diagrama de implantação">
+# Kanban  Data 
+<img src="screenshot/graphiql.png" alt="Tela principal">
 
-> Projeto de implantação por meio de orquestração com Docker Compose. O propósito deste projeto é realizar a implantação local dos micro-serviços: [Kanban Frontend](https://github.com/bpbastos/kanban-ms/tree/main/kanban-frontend) e [Kanban Data](https://github.com/bpbastos/kanban-ms/tree/main/kanban-data), ambos encontrados nesse repositório, além de configurá-los para utilizar o serviço de gerenciamento de usuários externo, o Back4app (disponível em https://back4app.com). Esses três micro-serviços fazem parte da aplicação web de gestão de projetos baseada no método Kanban. 
+> API GraphQL que fornece os dados dos projetos para a aplicação web de gerenciamento de projetos usando o método Kanban. Este backend foi desenvolvido utilizando as seguintes tecnologias: Python 3, FastAPI, Strawberry GraphQL, SQLAlchemy, Asyncio e banco de dados Postgres.
 
-> Projeto de implantação desenvolvido como uma parte do trabalho de conclusão do terceiro e último módulo - Desenvolvimento Backend Avançado - da Pós-Graduação em Desenvolvimento FullStack da PUC-RIO. 
+> Esta API foi desenvolvida como uma parte do trabalho de conclusão do terceiro e último módulo - Desenvolvimento Backend Avançado - da Pós-Graduação em Desenvolvimento FullStack da PUC-RIO. 
+
+
+## Funcionalidades
+
+- [x] Listar quadros (Query boards).
+- [x] Consultar quadro (Query board).
+- [x] Listar prioridades (Query priorities).
+- [x] Consultar tarefa (Query task).
+- [x] Adicionar quadro (Mutation addBoard).
+- [x] Adicionar prioridade (Mutation addProority).
+- [x] Adicionar tarefa (Mutation addTask).
+- [x] Atualizar tarefa (Mutation updateTask).
+- [x] Deletar tarefa (Mutation deleteTask).
+- [x] Adicionar sub tarefa (Mutation addSubTask).
+- [x] Marcar subtarefa como pronta (Mutation markSubTaskDone).
+- [x] Deletar subtarefa (Mutation deleteSubTask).
 
 ## Todo
 
-- [ ] Separar projetos em repositórios git diferentes
-- [ ] Desenvolver API Gateway (Apollo Federation)
-- [ ] Substituir o Back4app pelo projeto open source Parse Server - https://github.com/parse-community/parse-server
+- [ ] Criar model para o usuário e evitar de usar o ID do Back4app
+- [ ] Autenticação/Autorização via serviço de gerência de usuário ou api gateway
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se o seu ambiente atende aos seguintes requisitos:
 
+> ATENÇÃO, este backend foi desenvolvido para rodar em conjunto com o frontend (Kanban-Frontend), o serviço de gerenciamento de usuários (Back4app) e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação - https://github.com/bpbastos/kanban-ms - para garantir uma configuração adequada.
+
 * `Docker`
 
 > Instalação do docker: https://docs.docker.com/engine/install/
-
-* `Conta no BaaS - Back4app`
-
-> Você precisa criar uma conta gratuita no Back4app (https://back4app.com) e recuperar as seguintes Keys:
-
-```
-APPLICATION_ID
-RESTAPIKEY
-```
-
-> As Keys estão disponíveis na dashboard administrativa em "App Settings" > "Security & Keys"
 
 ## 🚀 Rodando
 
@@ -39,36 +45,25 @@ git clone https://github.com/bpbastos/kanban-ms.git
 
 Acesse o diretório do projeto com:
 ```
-cd kanban-ms
+cd kanban-ms/kanban-data
 ```
 
-Crie um arquivo .env no diretório raiz do projeto com as seguintes variáveis:
-> Substituia as variaveis BACK4APP_APPID e BACK4APP_RESTAPIKEY com as keys da sua conta no Back4app
+Crie um arquivo .env na raiz do diretório kanban-data com as seguintes variáveis:
 
 ```env
-#Back4app
-BACK4APP_URL=https://parseapi.back4app.com
-BACK4APP_APPID=chave-appid-do-back4app
-BACK4APP_RESTAPIKEY=chave-restapikey-do-back4app
-
-#API GraphQL
-KANBANDATA_URL=http://localhost:8000/graphql
-
-#Postgres
+KANBANFRONT_URL=http://localhost:3000
 POSTGRES_HOST=db
 POSTGRES_USER=kanban
 POSTGRES_PASSWORD=kanbanpass
 POSTGRES_DB=kanban
-
-#Frontend
-KANBANFRONT_URL=http://localhost:3000
-NUXT_SECRET=chave-com-32-caracteres
 ```
 
-No diretório raiz, execute:
+No diretório kanban-data em um terminal, execute:
 ```sh
-docker compose up -d
+docker run -d --env-file ./.env -p 5432:5432 --name db postgres:16 
+docker build -t kanban-data:1.0 .
+docker run -d --env-file ./.env --link db:db -p 8000:8000 --name data kanban-data:1.0 
 docker exec --env-file ./.env data python create_db.py
 ```
 
-Abra o endereço http://localhost:3000 no seu navegador.
+Abra o endereço http://localhost:8000/graphql no seu navegador.
