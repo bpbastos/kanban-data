@@ -1,7 +1,14 @@
 # Kanban  Data 
+
+[![dependency - fastapi](https://img.shields.io/badge/dependency-fastapi-blue)](https://pypi.org/project/fastapi)
+[![dependency - strawberry-graphql](https://img.shields.io/badge/dependency-strawberry--graphql-blue)](https://pypi.org/project/strawberry-graphql)
+[![dependency - SQLAlchemy](https://img.shields.io/badge/dependency-SQLAlchemy-blue)](https://pypi.org/project/SQLAlchemy)
+[![dependency - Asyncpg](https://img.shields.io/badge/dependency-Asyncpg-blue)](https://pypi.org/project/Asyncpg)
+
+
 <img src="screenshot/graphiql.png" alt="Tela principal">
 
-> API GraphQL que fornece os dados dos projetos para a aplicação web de gerenciamento de projetos usando o método Kanban. Este backend foi desenvolvido utilizando as seguintes tecnologias: Python 3, FastAPI, Strawberry GraphQL, SQLAlchemy, Asyncio e banco de dados Postgres.
+> API GraphQL que fornece os dados dos projetos para a SPA de gerenciamento de projetos usando o método Kanban (Kanban App). Este backend foi desenvolvido utilizando as seguintes tecnologias: Python 3, FastAPI, Strawberry GraphQL, SQLAlchemy, Asyncpg e banco de dados Postgres.
 
 > Esta API foi desenvolvida como uma parte do trabalho de conclusão do terceiro e último módulo - Desenvolvimento Backend Avançado - da Pós-Graduação em Desenvolvimento FullStack da PUC-RIO. 
 
@@ -30,7 +37,8 @@
 
 Antes de começar, verifique se o seu ambiente atende aos seguintes requisitos:
 
-> ATENÇÃO, este backend foi desenvolvido para rodar em conjunto com o frontend (Kanban-Frontend), o serviço de gerenciamento de usuários (Back4app) e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação - https://github.com/bpbastos/kanban-ms - para garantir uma configuração adequada.
+> ATENÇÃO, este backend foi desenvolvido para rodar em conjunto com o frontend [Kanban Frontend](https://github.com/bpbastos/kanban-frontend)
+, o serviço de gerenciamento de usuários (Back4app) e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação [Kanban Deploy](https://github.com/bpbastos/kanban-deploy) para garantir uma configuração adequada.
 
 * `Docker`
 
@@ -40,29 +48,41 @@ Antes de começar, verifique se o seu ambiente atende aos seguintes requisitos:
 
 Faça clone do projeto:
 ```
-git clone https://github.com/bpbastos/kanban-ms.git
+git clone https://github.com/bpbastos/kanban-data.git
 ```
 
 Acesse o diretório do projeto com:
 ```
-cd kanban-ms/kanban-data
+cd kanban-data
 ```
 
 Crie um arquivo .env na raiz do diretório kanban-data com as seguintes variáveis:
 
 ```env
-KANBANFRONT_URL=http://localhost:3000
+KANBANFRONTEND_URL=http://localhost:3000
 POSTGRES_HOST=db
 POSTGRES_USER=kanban
 POSTGRES_PASSWORD=kanbanpass
 POSTGRES_DB=kanban
 ```
 
-No diretório kanban-data em um terminal, execute:
+No diretório kanban-data em um terminal, execute para criar a instância do banco:
 ```sh
 docker run -d --env-file ./.env -p 5432:5432 --name db postgres:16 
+```
+
+Para construir a imagem docker do projeto, execute:
+```sh
 docker build -t kanban-data:1.0 .
+```
+
+Para rodar o projeto, execute:
+```sh
 docker run -d --env-file ./.env --link db:db -p 8000:8000 --name data kanban-data:1.0 
+```
+
+ATENÇÃO, o comando abaixo deleta e recria TODAS as tabelas do projeto, execute com cautela!
+```sh
 docker exec --env-file ./.env data python create_db.py
 ```
 
