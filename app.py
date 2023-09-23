@@ -9,7 +9,7 @@ from schema import get_context
 
 import os
 
-FRONTEND_URL = os.getenv('FRONTEND_URL')
+FRONTEND_URL = os.getenv('KANBANFRONTEND_URL')
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
 
