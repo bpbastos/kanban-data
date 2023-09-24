@@ -8,7 +8,7 @@
 
 <img src="screenshot/graphiql.png" alt="Tela principal">
 
-> API GraphQL que fornece os dados dos projetos para a SPA de gerenciamento de projetos usando o método Kanban (Kanban App). Este backend foi desenvolvido utilizando as seguintes tecnologias: Python 3, FastAPI, Strawberry GraphQL, SQLAlchemy, Asyncpg e banco de dados Postgres.
+> API GraphQL que fornece os dados dos projetos para a SPA de gerenciamento de projetos usando o método Kanban ([Kanban Deploy](https://github.com/bpbastos/kanban-deploy)). Este backend foi desenvolvido utilizando as seguintes tecnologias: Python 3, FastAPI, Strawberry GraphQL, SQLAlchemy, Asyncpg e banco de dados Postgres.
 
 > Esta API foi desenvolvida como uma parte do trabalho de conclusão do terceiro e último módulo - Desenvolvimento Backend Avançado - da Pós-Graduação em Desenvolvimento FullStack da PUC-RIO. 
 
@@ -38,7 +38,7 @@
 Antes de começar, verifique se o seu ambiente atende aos seguintes requisitos:
 
 > ATENÇÃO, este backend foi desenvolvido para rodar em conjunto com o frontend [Kanban Frontend](https://github.com/bpbastos/kanban-frontend)
-, o serviço de gerenciamento de usuários (Back4app) e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação [Kanban Deploy](https://github.com/bpbastos/kanban-deploy) para garantir uma configuração adequada.
+, o módulo de gerenciamento de usuários do BaaS [Back4App](https://www.back4app.com/ e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação [Kanban Deploy](https://github.com/bpbastos/kanban-deploy) para garantir uma configuração adequada.
 
 * `Docker`
 
