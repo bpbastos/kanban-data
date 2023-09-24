@@ -38,7 +38,7 @@
 Antes de começar, verifique se o seu ambiente atende aos seguintes requisitos:
 
 > ATENÇÃO, este backend foi desenvolvido para rodar em conjunto com o frontend [Kanban Frontend](https://github.com/bpbastos/kanban-frontend)
-, o módulo de gerenciamento de usuários do BaaS [Back4App](https://www.back4app.com/) e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação [Kanban Deploy](https://github.com/bpbastos/kanban-deploy) para garantir uma configuração adequada.
+, o módulo de gerenciamento de usuários do [Back4App](https://www.back4app.com/) e um banco de dados Postgres. Recomendo seguir as instruções contidas no README do repositório de implantação [Kanban Deploy](https://github.com/bpbastos/kanban-deploy) para garantir uma configuração adequada.
 
 * `Docker`
 
