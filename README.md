@@ -33,6 +33,9 @@
 - [ ] Criar model para o usuário e evitar de usar o ID do Back4app
 - [ ] Usar Dataloaders nas consultas
 - [ ] Refatorar usando Clean Architecture
+- [ ] Implmentar padrão de tratamento de erros
+- [ ] Implmentar validação dos dados de entrada
+- [ ] Implementar testes automatizados (Unitários e de segurança)
 - [ ] Autenticação/Autorização via serviço de gerência de usuário ou api gateway
 
 ## 💻 Pré-requisitos
