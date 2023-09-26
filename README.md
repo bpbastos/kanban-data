@@ -20,7 +20,7 @@
 - [x] Listar prioridades (Query priorities).
 - [x] Consultar tarefa (Query task).
 - [x] Adicionar quadro (Mutation addBoard).
-- [x] Adicionar prioridade (Mutation addProority).
+- [x] Adicionar prioridade (Mutation addPriority).
 - [x] Adicionar tarefa (Mutation addTask).
 - [x] Atualizar tarefa (Mutation updateTask).
 - [x] Deletar tarefa (Mutation deleteTask).
