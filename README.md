@@ -31,6 +31,8 @@
 ## Todo
 
 - [ ] Criar model para o usuário e evitar de usar o ID do Back4app
+- [ ] Usar Dataloaders nas consultas
+- [ ] Refatorar usando Clean Architecture
 - [ ] Autenticação/Autorização via serviço de gerência de usuário ou api gateway
 
 ## 💻 Pré-requisitos
