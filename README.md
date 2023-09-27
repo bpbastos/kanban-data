@@ -31,6 +31,7 @@
 ## Todo
 
 - [ ] Criar model para o usuário e evitar de usar o ID do Back4app
+- [ ] Substiuir --link (depreciado) por networks
 - [ ] Usar Dataloaders nas consultas
 - [ ] Refatorar usando Clean Architecture
 - [ ] Implementar padrão de tratamento de erros
