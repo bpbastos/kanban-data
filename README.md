@@ -33,7 +33,7 @@
 - [ ] Criar model para o usuário e evitar de usar o ID do Back4app
 - [ ] Substiuir --link (depreciado) por networks
 - [ ] Usar Dataloaders nas consultas
-- [ ] Refatorar usando Clean Architecture
+- [ ] Refatorar usando Hexagon Architecture
 - [ ] Implementar padrão de tratamento de erros
 - [ ] Implementar validação dos dados de entrada
 - [ ] Implementar testes automatizados (Unitários e de segurança)
